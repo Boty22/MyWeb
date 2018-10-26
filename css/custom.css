@@ -1,0 +1,21 @@
+#c_footer_p1, #c_footer_p2{
+    margin: 0px;
+    color: rgba(255,255,255,.5);
+}
+#c_footer_p2{
+    font-weight: bold;
+}
+h2{
+    margin: 0px;
+}
+
+.custom_footer{
+    /*border-top-style: double;*/
+    background-color: #343a40;
+    padding: 10px 2px;
+    /*position: fixed;*/
+    /*position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;*/
+}
