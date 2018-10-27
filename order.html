@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     
     <!-- Bootstrap CSS dataTables -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css" rel="stylesheet"/>
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/custom.css" >
@@ -54,36 +55,86 @@
         <h4>Order summary</h4>
 
       </div>
-      <div class="container">
-        <table class="table table-striped table-inverse table-bordered table-hover" cellspacing="0" width="100%" id="tableProducts">
-          <thead class="thead-light">
+      <div class="container table-responsive">
+        <table class="table table-bordered table-hover"  style="width:100%" id="tableProducts">
+          <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th >Confirmation #</th>
+              <th >Item</th>
+              <th >Vendor</th>
+              <th>Price</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <th>001</th>
+              <td>Laptop HP 13in</td>
+              <td>Babara</td>
+              <td>500</td>
             </tr>
             <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
+              <th>002</th>
+              <td>Microwave oven Thomas</td>
+              <td>ElenorV1</td>
+              <td>50</td>
             </tr>
             <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
+              <th>003</th>
+              <td>Black Chair</td>
+              <td>ElenorV1</td>
+              <td>75</td>
+            </tr>
+            <tr>
+              <th>004</th>
+              <td>ViewSonic LED 14 in screen </td>
+              <td>YeseniaTR12</td>
+              <td>110</td>
+            </tr>
+            <tr>
+              <th>005</th>
+              <td>Original D'Siglio Painting 6ftx6ft</td>
+              <td>ArtAssociationDallas</td>
+              <td>14500</td>
+            </tr>
+            <tr>
+              <th>006</th>
+              <td>Foldable Desk</td>
+              <td>ElenorV1</td>
+              <td>45</td>
+            </tr>
+            <tr>
+              <th>007</th>
+              <td>Laptop HP 17in</td>
+              <td>YeseniaTR12</td>
+              <td>1400</td>
+            </tr>
+            <tr>
+              <th>008</th>
+              <td>Microwave oven GE</td>
+              <td>LetzOrg</td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <th>009</th>
+              <td>Antique Ahane's letter</td>
+              <td>AhaneOrg</td>
+              <td>3050</td>
+            </tr>
+            <tr>
+              <th>010</th>
+              <td>Letz' original manuscrit</td>
+              <td>LetzOrg</td>
+              <td>11500</td>
             </tr>
           </tbody>
+          <tfoot light>
+              <tr>
+                <th >Confirmation#</th>
+                <th >Item</th>
+                <th >Vendor</th>
+                <th>Price</th>
+              </tr>
+            </tfoot>
         </table>
       </div>
 
@@ -106,18 +157,41 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     
+
+  <!-- Table JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script>
       $(document).ready(function() {
-        $('#tableProducts').DataTable();
-    } );
-    </script>
+        // Setup - add a text input to each footer cell
+        $('#tableProducts tfoot th').each( function () {
+          var title = $(this).text();
+          $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+        } );
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        // DataTable
+        var table = $('#tableProducts').DataTable();
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
+        // Apply the search
+        table.columns().every( function () {
+          var that = this;
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/js/dataTables.bootstrap4.min.js"></script>
-  
+          $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+          } );
+        } );
+      } );
+
+
+
+
+
+      </script>
 
   </body>
 </html>
