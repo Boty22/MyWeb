@@ -9,6 +9,15 @@ h2{
     margin: 0px;
 }
 
+html{
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 70px; /* Margin bottom by footer height */
+  }
+
 .custom_footer{
     /*border-top-style: double;*/
     background-color: #343a40;
@@ -18,4 +27,8 @@ h2{
     left: 0;
     bottom: 0;
     width: 100%;*/
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
 }
