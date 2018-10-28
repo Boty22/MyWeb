@@ -47,6 +47,7 @@
 
     <!-- Content -->
     <main>
+      <hr>
 
       <!-- Sliders -->
       <div class="jumbotron text-center">
@@ -58,18 +59,46 @@
               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
+
+
             <!-- The slideshow -->
             <div class="carousel-inner">
+              
               <div class="carousel-item active">
                 <a href ="profile.html"> <img class="d-block w-100" src="./sliders/first.jpg" alt="First slide"> </a>
+                
+                <div class="container">
+                  <div class="carousel-caption text-left d-none d-md-block">
+                    <h1>See your profile</h1>
+                    <p>Privacy ensured</p>
+                  </div>
+                </div>
+
               </div>
+
               <div class="carousel-item">
                 <a href ="order.html"> <img class="d-block w-100" src="./sliders/second.jpg" alt="Second slide"> </a>
+                <div class="container">
+                  <div class="carousel-caption text-left d-none d-md-block">
+                    <h1>See your order Summary</h1>
+                    <p>Privacy ensured</p>
+                  </div>
+                </div>
+
               </div>
               <div class="carousel-item">
                 <a href ="post.html"> <img class="d-block w-100" src="./sliders/third.jpg" alt="Third slide"> </a>
+                <div class="container">
+                  <div class="carousel-caption text-left d-none d-md-block">
+                    <h1>Post a new item</h1>
+                    <p>Privacy ensured</p>
+                  </div>
+                </div>
+              
               </div>
             </div>
+
+
             <!-- Left and right controls -->
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -86,7 +115,7 @@
       <div>
         <h2>Animations</h2><br>
       </div>
-      <div class="album">
+      <div class="album container">
         <div class="row">
 
           <div class="col-md-3">
@@ -148,7 +177,9 @@
                     </div>
                     <input id="keypress_tr" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">                    
                   </div>
-                  <div class="col-md-2" id="div_keypress" style="width:15px;height:15px;background-color:red; display: none;"></div>
+                  <div class="col-md-2">
+                    <div id="div_keypress" style="width:15px;height:15px;background-color:red; display: none;"></div>
+                  </div>
                 </div>
                 
                 <div class="row">
@@ -158,7 +189,9 @@
                     </div>
                     <input id="keydown_tr" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
                   </div>
-                  <div class="col-md-2" id="div_keydown" style="width:15px;height:15px;background-color:red; display: none;"></div>
+                  <div class="col-md-2">
+                    <div id="div_keydown" style="width:15px;height:15px;background-color:red; display: none;"></div>
+                  </div>
                 </div>
 
               </div>
@@ -210,7 +243,7 @@
         $("#b_mouse").mouseenter(function(){
     
           $("#imagen_3").slideDown(5000, function(){
-            alert("Example of alert");
+            alert("Mouse animation DONE!");
           });
         });
   
@@ -226,7 +259,7 @@
         $("#keydown_tr").keydown(function(){
           var m = $("#div_keydown");
           m.show();
-          m.animate({width: '40px', opacity: '1.0'}, "slow").animate({height: '10px', opacity: '1.0'}, "slow").animate({width: '15px', opacity: '1.0'}, "slow").animate({height: '15px', opacity: '1.0'}, "slow");
+          m.animate({width: '25px', opacity: '1.0'}, "slow").animate({height: '10px', opacity: '1.0'}, "slow").animate({width: '15px', opacity: '1.0'}, "slow").animate({height: '15px', opacity: '1.0'}, "slow");
           m.fadeOut();
         });
         
