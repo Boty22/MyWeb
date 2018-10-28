@@ -84,8 +84,83 @@
       </div>
 
       <div>
-        <h2>Buy and sell<br><br><br><br><br><br><br><br> from home!</h2>
+        <h2>Animations</h2><br>
       </div>
+      <div class="album">
+        <div class="row">
+
+          <div class="col-md-3">
+            <div class="card mb-3 box-shadow">
+              <div class="card-header">
+                <h4>Click</h4>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <button id="b_show" type="button" class="btn btn-success">show</button>
+                <button id="b_hide" type="button" class="btn btn-danger">hide</button>
+              </div>
+              <img id="imagen_1" class="card-img-bottom" src="./for_animations/picture1.jpg" alt="Imagen1">
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="card mb-3 box-shadow">
+              <div class="card-header">
+                <h4>DoubleClick</h4>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <button id="b_toggle" type="button" class="btn btn-info" data-toggle="button" aria-pressed="false">toggle</button>
+              </div>
+              <img id="imagen_2" class="card-img-bottom" src="./for_animations/picture2.jpg" alt="Imagen2">
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="card mb-3 box-shadow">
+              <div class="card-header">
+                <h4>Mouse</h4>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <button id="b_mouse" type="button" class="btn btn-primary">enter and leave</button>
+              </div>
+              <img id="imagen_3" class="card-img-bottom" src="./for_animations/picture3.jpg" alt="Imagen3" style="display: none;">
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="card mb-3 box-shadow">
+              <div class="card-header">
+                <h4>Key</h4>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Keypress</span>
+                  </div>
+                  <input id="keypress_tr" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Keydown</span>
+                  </div>
+                  <input id="keydown_tr" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+
+              </div>
+              <img class="card-img-bottom" src="./for_animations/picture4.jpg" alt="Imagen2">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
       <!-- Animations -->
 
     </main>
@@ -103,5 +178,54 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#b_hide").click(function(){
+          $("#imagen_1").hide();
+          });
+        
+        $("#b_show").click(function (){
+            // body...
+          $("#imagen_1").show();  
+  
+          });
+        
+        $("#b_toggle").dblclick(function (){
+          //$("#b_toggle").button('toggle');
+          $("#imagen_2").fadeToggle(2500);
+           
+          });
+  
+        $("#b_mouse").mouseenter(function(){
+    
+          $("#imagen_3").slideDown(5000, function(){
+            alert("Example of alert");
+          });
+        });
+  
+        $("#b_mouse").mouseleave(function(){
+            $("#imagen_3").stop();
+        });
+
+
+        $("#keypress_tr").keypress(function(){
+          $("#div_keypress").fadeIn().fadeTo(1).fadeTo("slow",0.5).fadeOut();
+        });
+  
+        $("#keydown_tr").keydown(function(){
+          var m = $("#div_keydown");
+          m.show();
+          m.animate({width: '40px', opacity: '1.0'}, "slow").animate({height: '10px', opacity: '1.0'}, "slow").animate({width: '15px', opacity: '1.0'}, "slow").animate({height: '15px', opacity: '1.0'}, "slow");
+          m.fadeOut();
+        });
+        
+      });
+    </script>
+
+
+
   </body>
 </html>
