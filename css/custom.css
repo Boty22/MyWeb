@@ -22,11 +22,7 @@ body {
     /*border-top-style: double;*/
     background-color: #343a40;
     padding: 10px 2px;
-    /*position: fixed;*/
-    /*position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;*/
+
     position: absolute;
     bottom: 0;
     width: 100%;
